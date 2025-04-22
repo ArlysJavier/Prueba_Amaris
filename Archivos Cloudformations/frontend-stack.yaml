@@ -1,0 +1,29 @@
+# === frontend-stack.yaml ===
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Bucket S3 con hosting estático para React
+
+Resources:
+  ReactAppBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      WebsiteConfiguration:
+        IndexDocument: index.html
+        ErrorDocument: index.html
+
+  ReactAppBucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: !Ref ReactAppBucket
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Sid: PublicReadGetObject
+            Effect: Allow
+            Principal: '*'
+            Action: s3:GetObject
+            Resource: !Sub "${ReactAppBucket.Arn}/*"
+
+Outputs:
+  ReactAppBucketWebsiteURL:
+    Description: URL pública del sitio estático
+    Value: !GetAtt ReactAppBucket.WebsiteURL
