@@ -1,4 +1,4 @@
-# Plataforma de Fondos - Despliegue en AWS con CloudFormation
+Plataforma de Fondos - Despliegue en AWS con CloudFormation
 
 Este proyecto despliega una aplicación fullstack con:
 - Backend en Java (Spring Boot) ejecutándose en EC2
@@ -6,7 +6,7 @@ Este proyecto despliega una aplicación fullstack con:
 
 ---
 
-## 📦 Requisitos Previos
+Requisitos Previos
 
 - Cuenta de AWS activa
 - CLI de AWS configurada (`aws configure`)
@@ -15,7 +15,7 @@ Este proyecto despliega una aplicación fullstack con:
 
 ---
 
-## 🚀 Despliegue del Backend (Spring Boot)
+Despliegue del Backend (Spring Boot)
 
 ### 1. Empaquetar la app
 
@@ -58,8 +58,7 @@ Accede a tu backend en:
 `http://<ip-publica>:8080/fondos`
 
 ---
-
-## 🌐 Despliegue del Frontend (React)
+Despliegue del Frontend (React)
 
 ### 1. Crear build
 
@@ -94,11 +93,3 @@ aws s3 sync dist/ s3://<nombre-del-bucket-creado-por-el-stack>
 ```
 
 Luego accede al sitio web en la URL pública retornada.
-
----
-
-## ✅ Notas adicionales
-
-- Asegúrate de habilitar el puerto 8080 en tu grupo de seguridad EC2.
-- Si usas HTTPS, puedes integrar CloudFront + ACM.
-- En producción se recomienda usar Elastic Beanstalk, ECS o Fargate para backend.
